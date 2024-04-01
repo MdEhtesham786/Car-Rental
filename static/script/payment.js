@@ -164,9 +164,7 @@ expiryYear_input.addEventListener('input', (e) => {
     expiryYear.innerText = e.target.value;
 });
 // This is your test publishable API key.
-const stripe = Stripe("pk_live_51NKS12SGP3cxB6mhiXhHRmMergZ3pMRJJfBMDKRmrPORVMcq9vEVOFl2x2Z6KaPXjh01NRgBqciHgC57kGvfuv8Y00i1qs0Udg");
-// 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
-// pk_live_51NKS12SGP3cxB6mhiXhHRmMergZ3pMRJJfBMDKRmrPORVMcq9vEVOFl2x2Z6KaPXjh01NRgBqciHgC57kGvfuv8Y00i1qs0Udg
+// const stripe = Stripe("");
 
 
 // The items the customer wants to buy
