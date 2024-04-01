@@ -223,7 +223,6 @@ exports.paymentSuccessfulPage = catchAsyncErrors(async (req, res, next) => {
     }
     const confirmOrder = jwt.verify(req.cookies.confirmOrder, process.env.JWT_SECRET);
     console.log(confirmOrder.totalPrice);
-    console.log('Working');
     return res.render('paymentSuccessfulPage', { layout: 'paymentSuccessfulPage', totalPrice: confirmOrder.totalPrice, });
 });
 exports.orderpage = catchAsyncErrors(async (req, res, next) => {

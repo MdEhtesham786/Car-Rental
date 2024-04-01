@@ -6,6 +6,7 @@ const catchAsyncErrors = require('../middleware/catchAsyncErrors');
 const { sendToken, sendCookie } = require('../utils/jwtToken');
 const jwt = require('jsonwebtoken');
 const stripe = require('stripe')(process.env.STRIPE_PUBLISHABLE_KEY);
+console.log(process.env.STRIPE_PUBLISHABLE_KEY);
 require('dotenv').config();
 exports.createPaymentIntent = catchAsyncErrors(async (req, res, next) => {
     const confirmOrder = jwt.verify(req.cookies.confirmOrder, process.env.JWT_SECRET);
@@ -16,16 +17,18 @@ exports.createPaymentIntent = catchAsyncErrors(async (req, res, next) => {
     // let amount = confirmOrder.totalPrice * 100;
     let amount = 100; // paise
     console.log(amount);
+    console.log('bakchodi 1');
+
     const paymentIntent = await stripe.paymentIntents.create({
         amount,// paise
         currency: "inr",
-        automatic_payment_methods: {
-            enabled: true,
-        },
+        payment_method_types: ['card'],
     });
+    console.log('bakchodi 2');
     return res.json({
         clientSecret: paymentIntent.client_secret,
-        emailAddress: req.user.recoveryEmail || 'mdehteshamshaikh1@gmail.com'
+        emailAddress: req.user.recoveryEmail || 'mdehteshamshaikh1@gmail.com',
+        id: paymentIntent.id
     });
 });
 exports.createOrder = catchAsyncErrors(async (req, res, next) => {
@@ -96,15 +99,10 @@ exports.shipping = catchAsyncErrors(async (req, res, next) => {
         phone_number
     };
     const token = jwt.sign(shippingInfo, process.env.JWT_SECRET, { expiresIn: 7200000 });
-    console.log(token);
     sendCookie('orderDetails', token, 7200000, res);
     return res.redirect(`/api/v1/order/${req.params.id}/confirm-order`);
 });
 exports.confirmOrder = catchAsyncErrors(async (req, res, next) => {
-    console.log('dude');
-    console.log(req.cookies.orderDetails);
-    let decrypted = jwt.verify(req.cookies.orderDetails, process.env.JWT_SECRET);
-    console.log('DECRYPTED', decrypted);
     if (!req.cookies.orderDetails) {
         next(new ErrorHandler('Cookie expired', 304));
     }
@@ -145,6 +143,7 @@ exports.confirmOrder = catchAsyncErrors(async (req, res, next) => {
             };
             const token = jwt.sign(confirmOrder, process.env.JWT_SECRET, { expiresIn: 7200000 });
             sendCookie('confirmOrder', token, 7200000, res);
+
             return res.redirect(`/api/v1/order/${req.params.id}/payment`);
 
             // return res.render('confirmOrder', { layout: 'confirmOrder', productsId: req.params.id, products: orderItems, totalPrice, page: 'confirmOrder' });

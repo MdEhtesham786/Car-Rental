@@ -113,7 +113,7 @@
                                         <!-- Options -->
                                         <div class="mt-4 lg:row-span-3 lg:mt-0">
                                             <h2 class="sr-only">Product information</h2>
-                                            <p class="text-3xl tracking-tight text-gray-900">₹<%=product.price%>
+                                            <p class="text-3xl tracking-tight text-gray-900">₹<%=product.price%>/day
                                             </p>
 
                                             <!-- Reviews -->
@@ -183,7 +183,7 @@
                                             </div>
 
                                             <!-- Sizes -->
-                                            <div class="mt-10">
+                                            <div class="mt-10 hidden">
                                                 <div class="flex items-center justify-between">
                                                     <h3 class="text-sm font-medium text-gray-900">Size</h3>
                                                     <a href="#"
@@ -328,13 +328,13 @@
                                             </div>
                                             <form action="/api/v1/order/<%=productID%>/shipping" method="get">
                                                 <button type="submit"
-                                                    class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Buy
+                                                    class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Rent
                                                     now</button>
                                             </form>
                                             <form action="/api/v1/" method="post">
                                                 <button type="submit"
                                                     class="mt-5 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add
-                                                    to bag</button>
+                                                    to Wishlist</button>
                                             </form>
                                         </div>
 

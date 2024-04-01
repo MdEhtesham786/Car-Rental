@@ -8,7 +8,7 @@ let shippingPrice = document.getElementById('shippingPrice');
 console.log(shippingPrice);
 incrementsArr.forEach((increment, i) => {
     increment.addEventListener('click', () => {
-        if (quantityArr[i].value < 10) {
+        if (quantityArr[i].value < 30) {
             quantityArr[i].value++;
             let newPrice = parseInt(priceArr[i].getAttribute('data-price'));
             priceArr[i].innerText = newPrice * parseInt(quantityArr[i].value);

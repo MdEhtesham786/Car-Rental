@@ -1,5 +1,5 @@
 <div id="last-users">
-    <h1 class="font-bold py-7 uppercase text-center text-[20px] ">Create Product </h1>
+    <h1 class="font-bold py-7 uppercase text-center text-[20px] ">Add Car </h1>
     <div class="bg-black w-[60%] m-auto min-h-[45rem] mb-8  flex justify-center items-center">
         <form action="/api/v1/seller/product/update-product/<%=product.id%>"
             class=" min-h-[40rem] w-[28rem] flex  items-center flex-col" method="post" enctype="multipart/form-data">
@@ -12,7 +12,7 @@
                     </svg>
                 </label>
                 <input type="text" class="" value="<%=product.name%>" name="product_name" id="product_name"
-                    placeholder="Product Name" required>
+                    placeholder="Car Name" required>
 
             </div>
             <div class="productInputs">
@@ -25,7 +25,7 @@
 
                 </label>
                 <input type="number" class="" value="<%=product.price%>" name="product_price" id="product_price"
-                    placeholder="Price" required>
+                    placeholder="Price/day" required>
 
             </div>
             <div class="productInputs">
@@ -37,7 +37,7 @@
                     </svg>
 
                 </label>
-                <textarea name="product_description" id="product_description" placeholder="Product Description"
+                <textarea name="product_description" id="product_description" placeholder="Car Description"
                     required><%=product.description%></textarea>
 
             </div>
@@ -86,21 +86,20 @@
                                 <!-- <input type="text" class="" name="product_category" id="product_category" placeholder="Choose Category"> -->
                                 <select name="product_category" id="product_category" required style="color: black;">
                                     <option value="Choose Category">Choose Category</option>
-                                    <option value="Fashion" <%=product.category==='Fashion' ? 'selected' :'' %>
-                                        >Fashion
+                                    <option value="Sedan" <%=product.category==='Sedan' ? 'selected' :'' %>
+                                        >Sedan
                                     </option>
-                                    <option value="Electronics" <%=product.category==='Electronics' ? 'selected' :'' %>
-                                        >Electronics
+                                    <option value="Suv" <%=product.category==='Suv' ? 'selected' :'' %>
+                                        >Suv
                                     </option>
-                                    <option value="Food and beverages" <%=product.category==='Food and beverages'
-                                        ? 'selected' :'' %>>Food and beverages</option>
+                                    <option value="Coupe" <%=product.category==='Coupe' ? 'selected' :'' %>>Coupe
+                                    </option>
                                     <option value="Sports" <%=product.category==='Sports' ? 'selected' :'' %>>Sports
                                     </option>
-                                    <option value="Health and Wellness" <%=product.category==='Health and Wellness'
-                                        ? 'selected' :'' %>>Health and Wellness</option>
-                                    <option value="Children's Goods" <%=product.category==="Children's Goods"
-                                        ? 'selected' :'' %>
-                                        >Children's Goods</option>
+                                    <option value="Hatchback" <%=product.category==='Hatchback' ? 'selected' :'' %>
+                                        >Hatchback</option>
+                                    <option value="Jeep" <%=product.category==="Jeep" ? 'selected' :'' %>
+                                        >Jeep</option>
                                     <option value="Others" <%=product.category==='Others' ? 'selected' :'' %>>Others
                                     </option>
                                 </select>
