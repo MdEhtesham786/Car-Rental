@@ -6,6 +6,7 @@ const catchAsyncErrors = require('../middleware/catchAsyncErrors');
 const { sendToken, sendCookie } = require('../utils/jwtToken');
 const jwt = require('jsonwebtoken');
 const stripe = require('stripe')(process.env.STRIPE_PUBLISHABLE_KEY);
+// console.log(process.env.STRIPE_PUBLISHABLE_KEY);
 require('dotenv').config();
 exports.createPaymentIntent = catchAsyncErrors(async (req, res, next) => {
     const confirmOrder = jwt.verify(req.cookies.confirmOrder, process.env.JWT_SECRET);
@@ -14,16 +15,16 @@ exports.createPaymentIntent = catchAsyncErrors(async (req, res, next) => {
         return next(ErrorHandler('Confirm order Session Expired!'));
     }
     // let amount = confirmOrder.totalPrice * 100;
-    let amount = 100; // paise
-    console.log(amount);
-    console.log('bakchodi 1');
+    // let amount = 100; // paise
+    // console.log(amount);
+    // console.log('1');
 
     const paymentIntent = await stripe.paymentIntents.create({
         amount,// paise
         currency: "inr",
         payment_method_types: ['card'],
     });
-    console.log('bakchodi 2');
+    // console.log('2');
     return res.json({
         clientSecret: paymentIntent.client_secret,
         emailAddress: req.user.recoveryEmail || 'mdehteshamshaikh1@gmail.com',
