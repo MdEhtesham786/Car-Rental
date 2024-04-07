@@ -9,28 +9,28 @@ body {
 
 .image-one {
     background: linear-gradient(transparent 50px, white),
-        url("../img/accessories.jpg");
+        url("../img/sport1.jpg");
     background-repeat: no-repeat;
     background-size: contain;
-    height: 38.5rem;
+    height: 55.5rem;
     width: 100vw;
 }
 
 .image-two {
     background: linear-gradient(transparent 50px, white),
-        url("../img/headphone.jpg");
+        url("../img/sport2.webp");
     background-repeat: no-repeat;
     background-size: contain;
-    height: 38.5rem;
+    height: 55.5rem;
     width: 100vw;
 }
 
 .image-three {
     background: linear-gradient(transparent 50px, white),
-        url("../img/milton.jpg");
+        url("../img/sport3.jpeg");
     background-repeat: no-repeat;
     background-size: contain;
-    height: 38.5rem;
+    height: 55.5rem;
     width: 100vw;
 }
 
