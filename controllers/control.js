@@ -115,7 +115,6 @@ exports.sellerDashboardPage = catchAsyncErrors(async (req, res, next) => {
     products.forEach((product) => {
         deliveredItems += product.sold;
     });
-    console.log('dashboard pe aaya');
     res.render('dashboard', { layout: 'layouts/dashboardLayouts', deliveredItems, role: 'seller', user, products, content: 'dashboard' });
 });
 exports.sellerOrdersPage = catchAsyncErrors(async (req, res, next) => {
